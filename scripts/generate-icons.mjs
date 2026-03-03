@@ -10,14 +10,9 @@ mkdirSync(PUBLIC, { recursive: true });
 const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="114" fill="#000"/>
-  <circle cx="152" cy="312" r="72" fill="none" stroke="#fff" stroke-width="20"/>
-  <circle cx="152" cy="312" r="12" fill="#fff"/>
-  <circle cx="360" cy="312" r="72" fill="none" stroke="#fff" stroke-width="20"/>
-  <circle cx="360" cy="312" r="12" fill="#fff"/>
-  <path d="M152 312 L210 200 L290 200 L360 312" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M200 200 L240 140 L310 140 L340 200" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M330 155 L375 175" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
-  <path d="M175 295 L130 330" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="160" fill="none" stroke="#fff" stroke-width="24"/>
+  <line x1="256" y1="160" x2="256" y2="352" stroke="#fff" stroke-width="24" stroke-linecap="round"/>
+  <line x1="160" y1="256" x2="352" y2="256" stroke="#fff" stroke-width="24" stroke-linecap="round"/>
 </svg>`;
 
 const sizes = [
