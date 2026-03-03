@@ -37,13 +37,13 @@ const AUTH_KEY = 'pickmeup_auth';
 const POLL_INTERVAL = 10_000;
 
 function loadAuth(): AuthState | null {
-  try { return JSON.parse(sessionStorage.getItem(AUTH_KEY) ?? 'null'); }
+  try { return JSON.parse(localStorage.getItem(AUTH_KEY) ?? 'null'); }
   catch { return null; }
 }
 
 function saveAuth(a: AuthState | null) {
-  if (a) sessionStorage.setItem(AUTH_KEY, JSON.stringify(a));
-  else sessionStorage.removeItem(AUTH_KEY);
+  if (a) localStorage.setItem(AUTH_KEY, JSON.stringify(a));
+  else localStorage.removeItem(AUTH_KEY);
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
