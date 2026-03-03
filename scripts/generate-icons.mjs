@@ -9,16 +9,15 @@ mkdirSync(PUBLIC, { recursive: true });
 
 const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#000000"/>
-  <g transform="translate(256,256)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="-110" cy="60" r="50" stroke-width="18"/>
-    <circle cx="110"  cy="60" r="50" stroke-width="18"/>
-    <path d="M-110,60 L-60,-20 L40,-20 L110,60" stroke-width="16"/>
-    <path d="M-30,-20 L10,-70 L70,-70 L90,-20" stroke-width="14"/>
-    <path d="M-60,-20 L40,-20" stroke-width="20" stroke-linecap="round"/>
-    <path d="M70,-70 L100,-55 M100,-55 L108,-42" stroke-width="12"/>
-    <circle cx="10" cy="-90" r="18" fill="#ffffff" stroke="none"/>
-  </g>
+  <rect width="512" height="512" rx="114" fill="#000"/>
+  <circle cx="152" cy="312" r="72" fill="none" stroke="#fff" stroke-width="20"/>
+  <circle cx="152" cy="312" r="12" fill="#fff"/>
+  <circle cx="360" cy="312" r="72" fill="none" stroke="#fff" stroke-width="20"/>
+  <circle cx="360" cy="312" r="12" fill="#fff"/>
+  <path d="M152 312 L210 200 L290 200 L360 312" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M200 200 L240 140 L310 140 L340 200" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M330 155 L375 175" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  <path d="M175 295 L130 330" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
 </svg>`;
 
 const sizes = [
