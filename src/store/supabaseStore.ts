@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import type { AppUser, AuthState, DataStore, Ping, PingStatus, Session } from '../types';
+import type { AppUser, DataStore, Ping, PingStatus, Session } from '../types';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
