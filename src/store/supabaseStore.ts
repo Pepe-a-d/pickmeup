@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import type { AppUser, DataStore, Ping, PingStatus, Session } from '../types';
+import type { AppUser, AuthState, DataStore, Ping, PingStatus, Session } from '../types';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -30,11 +30,11 @@ function assertOk<T>(data: T | null, error: unknown, ctx: string): T {
 
 interface UserRow { id: string; name: string; code: string; created_at: string; }
 interface SessionRow { id: string; name: string; is_active: boolean; created_at: string; closed_at: string | null; }
-interface PingRow { id: string; session_id: string; user_id: string; user_name: string; status: PingStatus; note: string | null; created_at: string; updated_at: string; }
+interface PingRow { id: string; session_id: string; user_id: string; user_name: string; status: PingStatus; note: string | null; lat: number | null; lng: number | null; created_at: string; updated_at: string; }
 
 const mapUser = (r: UserRow): AppUser => ({ id: r.id, name: r.name, code: r.code, createdAt: r.created_at });
 const mapSession = (r: SessionRow): Session => ({ id: r.id, name: r.name, isActive: r.is_active, createdAt: r.created_at, closedAt: r.closed_at ?? undefined });
-const mapPing = (r: PingRow): Ping => ({ id: r.id, sessionId: r.session_id, userId: r.user_id, userName: r.user_name, status: r.status, note: r.note ?? undefined, createdAt: r.created_at, updatedAt: r.updated_at });
+const mapPing = (r: PingRow): Ping => ({ id: r.id, sessionId: r.session_id, userId: r.user_id, userName: r.user_name, status: r.status, note: r.note ?? undefined, lat: r.lat ?? undefined, lng: r.lng ?? undefined, createdAt: r.created_at, updatedAt: r.updated_at });
 
 class SupabaseDataStore implements DataStore {
   async getUsers() {
@@ -99,9 +99,10 @@ class SupabaseDataStore implements DataStore {
     return assertOk(data, error, 'getPings').map(r => mapPing(r as PingRow));
   }
 
-  async createPing(sessionId: string, userId: string, userName: string, note?: string) {
+  async createPing(sessionId: string, userId: string, userName: string, note?: string, lat?: number, lng?: number) {
     const { data, error } = await supabase.rpc('create_ping', {
       p_session_id: sessionId, p_user_id: userId, p_user_name: userName, p_note: note ?? null,
+      p_lat: lat ?? null, p_lng: lng ?? null,
     });
     if (error) {
       if (error.message.includes('unique') || error.message.includes('duplicate')) throw new Error('You already requested a pickup for this session.');

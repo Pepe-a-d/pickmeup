@@ -24,6 +24,8 @@ export interface Ping {
   userName: string;
   status: PingStatus;
   note?: string;
+  lat?: number;
+  lng?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -45,7 +47,7 @@ export interface DataStore {
   deleteSession(id: string): Promise<void>;
   getActiveSession(): Promise<Session | null>;
   getPings(sessionId?: string): Promise<Ping[]>;
-  createPing(sessionId: string, userId: string, userName: string, note?: string): Promise<Ping>;
+  createPing(sessionId: string, userId: string, userName: string, note?: string, lat?: number, lng?: number): Promise<Ping>;
   updatePingStatus(id: string, status: PingStatus): Promise<Ping>;
   hasPingedInSession(sessionId: string, userId: string): Promise<boolean>;
   resolveLogin(code: string): Promise<AuthState | null>;

@@ -20,7 +20,7 @@ interface AppContextValue {
   activateSession: (id: string) => Promise<void>;
   deactivateSession: (id: string) => Promise<void>;
   deleteSession: (id: string) => Promise<void>;
-  createPing: (note?: string) => Promise<void>;
+  createPing: (note?: string, lat?: number, lng?: number) => Promise<void>;
   updatePingStatus: (id: string, status: Ping['status']) => Promise<void>;
   loading: boolean;
   error: string | null;
@@ -189,14 +189,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     catch (err) { handleError(err); }
   }, [refresh, handleError]);
 
-  const createPing = useCallback(async (note?: string) => {
+  const createPing = useCallback(async (note?: string, lat?: number, lng?: number) => {
     if (!auth || auth.role !== 'passenger' || !auth.userId) {
       setError('Not authenticated as passenger.'); return;
     }
     if (!activeSession) { setError('No active session right now.'); return; }
     try {
       setError(null);
-      await dataStore.createPing(activeSession.id, auth.userId, auth.userName!, note);
+      await dataStore.createPing(activeSession.id, auth.userId, auth.userName!, note, lat, lng);
       await refresh();
     } catch (err) { handleError(err); }
   }, [auth, activeSession, refresh, handleError]);
