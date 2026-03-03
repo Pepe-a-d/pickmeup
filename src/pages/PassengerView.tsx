@@ -173,9 +173,9 @@ export function PassengerView() {
     : 'ready';
 
   return (
-    <div className="app-shell" style={{ background: '#000', color: '#fff' }}>
+    <div className="app-shell">
       {/* Header */}
-      <header className="app-header" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+      <header className="app-header" >
         <div className="app-header__left">
           <span className="app-header__role" style={{ borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.4)' }}>
             Passenger
@@ -185,11 +185,10 @@ export function PassengerView() {
         <div className="app-header__right">
           <BellButton />
           <button className="btn btn-ghost btn-sm" onClick={refresh} disabled={loading}
-            style={{ color: 'rgba(255,255,255,0.4)', transform: loading ? 'rotate(180deg)' : 'none', transition: 'transform 0.5s' }}>
+            style={{ transform: loading ? 'rotate(180deg)' : 'none', transition: 'transform 0.5s' }}>
             ↻
           </button>
-          <button className="btn btn-ghost btn-sm" onClick={logout}
-            style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <button className="btn btn-ghost btn-sm" onClick={logout}>
             Out
           </button>
         </div>

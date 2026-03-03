@@ -313,6 +313,8 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   border-top: 1px solid var(--border);
   background: var(--bg-card);
   flex-shrink: 0;
+  /* Fill the home indicator zone with the same bg color */
+  padding-bottom: var(--safe-bottom);
 }
 .tab-bar__item {
   flex: 1;
@@ -322,8 +324,6 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   justify-content: center;
   gap: 3px;
   padding: clamp(8px, 2.5vw, 12px) 0;
-  /* Extra bottom padding for home indicator */
-  padding-bottom: calc(clamp(8px, 2.5vw, 12px) + var(--safe-bottom));
   cursor: pointer;
   background: none;
   border: none;
@@ -516,7 +516,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 @media (max-height: 700px) {
   .app-header { min-height: 44px; padding: 8px 14px; }
   .app-content { padding: 12px 14px; }
-  .tab-bar__item { padding: 6px 0; padding-bottom: calc(6px + var(--safe-bottom)); }
+  .tab-bar__item { padding: 6px 0; }
 }
 
 /* ── iPhone Pro / Dynamic Island ───────────────────────────── */
